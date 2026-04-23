@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://cd43tfmapwyvs"]
 
 [ext_resource type="Texture2D" uid="uid://ry7oemf75pgj" path="res://assets/actions/chop_back.png" id="1_4kqyw"]
-[ext_resource type="Script" uid="uid://ix2c6lxbt3" path="res://scenes/characters/player/player.gd" id="1_tebod"]
 [ext_resource type="Texture2D" uid="uid://cu8ns4rv031x0" path="res://assets/actions/chop_front.png" id="2_svuau"]
 [ext_resource type="Texture2D" uid="uid://4evcg233suwh" path="res://assets/actions/chop_left.png" id="3_ro20i"]
 [ext_resource type="Texture2D" uid="uid://b6b76eq4l7skh" path="res://assets/actions/chop_right.png" id="4_8y75b"]
@@ -18,9 +17,6 @@
 [ext_resource type="Texture2D" uid="uid://dowi8es1yw2ji" path="res://assets/actions/watering_front.png" id="15_gpigg"]
 [ext_resource type="Texture2D" uid="uid://bf54u3dcwksdx" path="res://assets/actions/watering_left.png" id="16_nt8su"]
 [ext_resource type="Texture2D" uid="uid://cmgd1rfp0bukf" path="res://assets/actions/watering_right.png" id="17_10pim"]
-[ext_resource type="Script" uid="uid://morwuvpo0kq6" path="res://scripts/state_machine/node_state_machine.gd" id="18_ro20i"]
-[ext_resource type="Script" uid="uid://bt0537gcw7ft8" path="res://scenes/characters/player/idle_state.gd" id="19_8y75b"]
-[ext_resource type="Script" uid="uid://dxfgi1rddoio3" path="res://scenes/characters/player/walk_state.gd" id="20_8y75b"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pbtrp"]
 atlas = ExtResource("1_4kqyw")
@@ -243,7 +239,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_es5sa")
 }],
-"loop": true,
+"loop": false,
 "name": &"chopping_back",
 "speed": 3.0
 }, {
@@ -254,7 +250,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ieypo")
 }],
-"loop": true,
+"loop": false,
 "name": &"chopping_front",
 "speed": 3.0
 }, {
@@ -265,7 +261,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_71adu")
 }],
-"loop": true,
+"loop": false,
 "name": &"chopping_left",
 "speed": 3.0
 }, {
@@ -276,7 +272,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_qe74o")
 }],
-"loop": true,
+"loop": false,
 "name": &"chopping_right",
 "speed": 3.0
 }, {
@@ -500,32 +496,29 @@ animations = [{
 radius = 17.029387
 
 [node name="Player" type="CharacterBody2D" unique_id=1993383715]
-script = ExtResource("1_tebod")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1657451000]
 position = Vector2(0.34374893, -22.09375)
 scale = Vector2(1.0690104, 1.0039063)
 sprite_frames = SubResource("SpriteFrames_bcx1r")
-animation = &"idle_back"
+animation = &"chopping_right"
 autoplay = "idle_front"
-frame_progress = 0.8134173
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=871382098]
 position = Vector2(1, -17)
 shape = SubResource("CircleShape2D_vjq2h")
 
 [node name="StateMachine" type="Node" parent="." unique_id=1442164166 node_paths=PackedStringArray("initial_node_state")]
-script = ExtResource("18_ro20i")
 initial_node_state = NodePath("Idle")
 
 [node name="Idle" type="Node" parent="StateMachine" unique_id=1619308846 node_paths=PackedStringArray("player", "animated_sprite_2d")]
-script = ExtResource("19_8y75b")
 player = NodePath("../..")
 animated_sprite_2d = NodePath("../../AnimatedSprite2D")
 
 [node name="Walk" type="Node" parent="StateMachine" unique_id=2048658765 node_paths=PackedStringArray("player", "animated_sprite_2d")]
-script = ExtResource("20_8y75b")
 player = NodePath("../..")
 animated_sprite_2d = NodePath("../../AnimatedSprite2D")
 
-[node name="Chopping" type="Node" parent="StateMachine" unique_id=1073214357]
+[node name="Chopping" type="Node" parent="StateMachine" unique_id=1073214357 node_paths=PackedStringArray("player", "animated_sprite_2d")]
+player = NodePath("../..")
+animated_sprite_2d = NodePath("../../AnimatedSprite2D")
