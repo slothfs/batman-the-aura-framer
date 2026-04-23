@@ -17,6 +17,9 @@
 [ext_resource type="Texture2D" uid="uid://dowi8es1yw2ji" path="res://assets/actions/watering_front.png" id="15_gpigg"]
 [ext_resource type="Texture2D" uid="uid://bf54u3dcwksdx" path="res://assets/actions/watering_left.png" id="16_nt8su"]
 [ext_resource type="Texture2D" uid="uid://cmgd1rfp0bukf" path="res://assets/actions/watering_right.png" id="17_10pim"]
+[ext_resource type="Script" uid="uid://morwuvpo0kq6" path="res://scripts/state_machine/node_state_machine.gd" id="18_ro20i"]
+[ext_resource type="Script" uid="uid://bt0537gcw7ft8" path="res://scenes/characters/player/idle_state.gd" id="19_8y75b"]
+[ext_resource type="Script" uid="uid://dxfgi1rddoio3" path="res://scenes/characters/player/walk_state.gd" id="20_8y75b"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pbtrp"]
 atlas = ExtResource("1_4kqyw")
@@ -58,13 +61,13 @@ region = Rect2(48, 0, 48, 48)
 atlas = ExtResource("6_6nfx3")
 region = Rect2(0, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_omk8d"]
-atlas = ExtResource("7_3hnlq")
-region = Rect2(336, 0, 48, 48)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_kghjy"]
 atlas = ExtResource("8_d73qs")
 region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_omk8d"]
+atlas = ExtResource("7_3hnlq")
+region = Rect2(336, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_72eiu"]
 atlas = ExtResource("9_u6wme")
@@ -286,31 +289,31 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle_back",
-"speed": 5.0
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_4c5ab")
 }],
 "loop": true,
-"name": &"idle_fornt",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_omk8d")
-}],
-"loop": true,
-"name": &"idle_left",
-"speed": 5.0
+"name": &"idle_front",
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_kghjy")
 }],
 "loop": true,
+"name": &"idle_left",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_omk8d")
+}],
+"loop": true,
 "name": &"idle_right",
-"speed": 5.0
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -508,9 +511,23 @@ radius = 17.029387
 position = Vector2(-9.536743e-07, -22)
 scale = Vector2(1.0546875, 1.0078125)
 sprite_frames = SubResource("SpriteFrames_bcx1r")
-animation = &"idle_fornt"
-autoplay = "idle_fornt"
+animation = &"idle_back"
+autoplay = "idle_front"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=871382098]
 position = Vector2(1, -17)
 shape = SubResource("CircleShape2D_vjq2h")
+
+[node name="StateMachine" type="Node" parent="." unique_id=1442164166 node_paths=PackedStringArray("initial_node_state")]
+script = ExtResource("18_ro20i")
+initial_node_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateMachine" unique_id=1619308846 node_paths=PackedStringArray("player", "animated_sprite_2d")]
+script = ExtResource("19_8y75b")
+player = NodePath("../..")
+animated_sprite_2d = NodePath("../../AnimatedSprite2D")
+
+[node name="Walk" type="Node" parent="StateMachine" unique_id=2048658765 node_paths=PackedStringArray("player", "animated_sprite_2d")]
+script = ExtResource("20_8y75b")
+player = NodePath("../..")
+animated_sprite_2d = NodePath("../../AnimatedSprite2D")
