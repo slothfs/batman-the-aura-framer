@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cd43tfmapwyvs"]
 
 [ext_resource type="Texture2D" uid="uid://ry7oemf75pgj" path="res://assets/actions/chop_back.png" id="1_4kqyw"]
+[ext_resource type="Script" uid="uid://ix2c6lxbt3" path="res://scenes/characters/player/player.gd" id="1_tebod"]
 [ext_resource type="Texture2D" uid="uid://cu8ns4rv031x0" path="res://assets/actions/chop_front.png" id="2_svuau"]
 [ext_resource type="Texture2D" uid="uid://4evcg233suwh" path="res://assets/actions/chop_left.png" id="3_ro20i"]
 [ext_resource type="Texture2D" uid="uid://b6b76eq4l7skh" path="res://assets/actions/chop_right.png" id="4_8y75b"]
@@ -60,6 +61,18 @@ region = Rect2(48, 0, 48, 48)
 [sub_resource type="AtlasTexture" id="AtlasTexture_4c5ab"]
 atlas = ExtResource("6_6nfx3")
 region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8y75b"]
+atlas = ExtResource("6_6nfx3")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tebod"]
+atlas = ExtResource("6_6nfx3")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6nfx3"]
+atlas = ExtResource("6_6nfx3")
+region = Rect2(144, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kghjy"]
 atlas = ExtResource("8_d73qs")
@@ -165,14 +178,6 @@ region = Rect2(192, 0, 48, 48)
 atlas = ExtResource("8_d73qs")
 region = Rect2(240, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4ge1t"]
-atlas = ExtResource("8_d73qs")
-region = Rect2(288, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rlcpy"]
-atlas = ExtResource("8_d73qs")
-region = Rect2(336, 0, 48, 48)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_c1dak"]
 atlas = ExtResource("7_3hnlq")
 region = Rect2(0, 0, 48, 48)
@@ -196,14 +201,6 @@ region = Rect2(192, 0, 48, 48)
 [sub_resource type="AtlasTexture" id="AtlasTexture_55sjc"]
 atlas = ExtResource("7_3hnlq")
 region = Rect2(240, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sfvi3"]
-atlas = ExtResource("7_3hnlq")
-region = Rect2(288, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ew6mj"]
-atlas = ExtResource("7_3hnlq")
-region = Rect2(336, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_apqo0"]
 atlas = ExtResource("14_r0hd7")
@@ -294,10 +291,19 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_4c5ab")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8y75b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tebod")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6nfx3")
 }],
 "loop": true,
 "name": &"idle_front",
-"speed": 3.0
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -417,16 +423,10 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_dynk0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4ge1t")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rlcpy")
 }],
 "loop": true,
 "name": &"walk_left",
-"speed": 12.0
+"speed": 9.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -446,16 +446,10 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_55sjc")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sfvi3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ew6mj")
 }],
 "loop": true,
 "name": &"walk_right",
-"speed": 12.0
+"speed": 9.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -506,13 +500,15 @@ animations = [{
 radius = 17.029387
 
 [node name="Player" type="CharacterBody2D" unique_id=1993383715]
+script = ExtResource("1_tebod")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1657451000]
-position = Vector2(-9.536743e-07, -22)
-scale = Vector2(1.0546875, 1.0078125)
+position = Vector2(0.34374893, -22.09375)
+scale = Vector2(1.0690104, 1.0039063)
 sprite_frames = SubResource("SpriteFrames_bcx1r")
 animation = &"idle_back"
 autoplay = "idle_front"
+frame_progress = 0.8134173
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=871382098]
 position = Vector2(1, -17)
