@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dvwqxj02uuh2x"
-path="res://.godot/imported/backmain.png-c071c31281f5d672d32919d083da953a.ctex"
+uid="uid://dowi8es1yw2ji"
+path="res://.godot/imported/watering_front.png-f337c0be7d625049b92c30dec3369c4d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://backmain.png"
-dest_files=["res://.godot/imported/backmain.png-c071c31281f5d672d32919d083da953a.ctex"]
+source_file="res://assets/actions/watering_front.png"
+dest_files=["res://.godot/imported/watering_front.png-f337c0be7d625049b92c30dec3369c4d.ctex"]
 
 [params]
 
