@@ -1,0 +1,15 @@
+[gd_resource type="TileSet" format=3 uid="uid://ccojv5mjyu05d"]
+
+[ext_resource type="Texture2D" uid="uid://bm0qqmdldbp1" path="res://assets/Tilesets/batman_water.png" id="1_yw6o0"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nbys2"]
+texture = ExtResource("1_yw6o0")
+0:0/animation_columns = 4
+0:0/animation_frame_0/duration = 0.2
+0:0/animation_frame_1/duration = 0.2
+0:0/animation_frame_2/duration = 0.2
+0:0/animation_frame_3/duration = 0.2
+0:0/0 = 0
+
+[resource]
+sources/0 = SubResource("TileSetAtlasSource_nbys2")
