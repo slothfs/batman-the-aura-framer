@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=20 format=3 uid="uid://ccojv5mjyu05d"]
+[gd_resource type="TileSet" load_steps=21 format=3 uid="uid://ccojv5mjyu05d"]
 
 [ext_resource type="Texture2D" uid="uid://bm0qqmdldbp1" path="res://assets/Tilesets/batman_water.png" id="1_yw6o0"]
 [ext_resource type="Texture2D" uid="uid://dps7kg400vr37" path="res://assets/Grass.png" id="2_4uypn"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://clkl3alwpby3y" path="res://scenes/objects/trees/small_tree.tscn" id="3_2ncqh"]
 [ext_resource type="Texture2D" uid="uid://dhm6717w5aoeb" path="res://assets/crop.png" id="3_7v73t"]
 [ext_resource type="Texture2D" uid="uid://b0wivup7dd67g" path="res://assets/Objects/Basic_Grass_Biom_things.png" id="4_7v73t"]
+[ext_resource type="PackedScene" uid="uid://ckghqc3qacrdy" path="res://scenes/objects/rocks/rocks.tscn" id="4_tsg2x"]
 [ext_resource type="PackedScene" uid="uid://btjot2e5opbn2" path="res://scenes/objects/trees/large_tree.tscn" id="4_ytwu2"]
 [ext_resource type="PackedScene" uid="uid://bhew0p43u6vft" path="res://scenes/components/hurt_component.tscn" id="5_iq60w"]
 [ext_resource type="PackedScene" uid="uid://be6c5kahaprb5" path="res://scenes/components/damage_component.tscn" id="6_kmsop"]
@@ -75,6 +76,7 @@ _bundled = {
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_1pbo8"]
 scenes/1/scene = ExtResource("2_58jda")
 scenes/2/scene = ExtResource("3_2ncqh")
+scenes/3/scene = ExtResource("4_tsg2x")
 scenes/6/scene = SubResource("PackedScene_y6um1")
 scenes/8/scene = ExtResource("4_ytwu2")
 
