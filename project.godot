@@ -15,6 +15,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="BatManFarmsAura"
+run/main_scene="res://scenes/houses/TestSceneHouse.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -75,6 +76,8 @@ hit={
 [layer_names]
 
 2d_physics/layer_1="ground"
+2d_physics/layer_2="Player"
+2d_physics/layer_3="Interactable"
 
 [physics]
 

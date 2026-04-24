@@ -21,12 +21,12 @@ tile_map_data = PackedByteArray("AAAhAAcAAQAAAAAAAQA=")
 tile_set = ExtResource("1_omrrf")
 
 [node name="Player" parent="." instance=ExtResource("2_o48fo")]
-position = Vector2(244, 344)
-scale = Vector2(0.5, 0.5)
+position = Vector2(832, 307)
+scale = Vector2(0.3, 0.3)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(-14, -48)
 scale = Vector2(2, 2)
-zoom = Vector2(2, 2)
+zoom = Vector2(4, 4)
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
