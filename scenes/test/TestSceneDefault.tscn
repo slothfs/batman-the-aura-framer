@@ -1,6 +1,6 @@
-[gd_scene format=4 uid="uid://dyoyj711chndo"]
+[gd_scene load_steps=0 format=4 uid="uid://dyoyj711chndo"]
 
-[ext_resource type="TileSet" uid="uid://ccojv5mjyu05d" path="res://scenes/test/TileSet/game_tile_set.tres" id="1_bmtc1"]
+[ext_resource type="TileSet" uid="uid://ccojv5mjyu05d" path="res://scenes/characters/player/TileSet/game_tile_set.tres" id="1_bmtc1"]
 
 [node name="TestSceneTilemap" type="Node2D" unique_id=1600686694]
 

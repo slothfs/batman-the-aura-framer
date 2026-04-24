@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" format=3 uid="uid://ccojv5mjyu05d"]
+[gd_resource type="TileSet" load_steps=9 format=3 uid="uid://ccojv5mjyu05d"]
 
 [ext_resource type="Texture2D" uid="uid://bm0qqmdldbp1" path="res://assets/Tilesets/batman_water.png" id="1_yw6o0"]
 [ext_resource type="Texture2D" uid="uid://dps7kg400vr37" path="res://assets/Grass.png" id="2_4uypn"]
@@ -488,7 +488,7 @@ terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "grass"
 terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 terrain_set_0/terrain_1/name = "tile"
-terrain_set_0/terrain_1/color = Color(0.4884162, 0.18868926, 0.99999994, 1)
+terrain_set_0/terrain_1/color = Color(0.488416, 0.188689, 1, 1)
 sources/0 = SubResource("TileSetAtlasSource_nbys2")
 sources/3 = SubResource("TileSetAtlasSource_2p8sr")
 sources/4 = SubResource("TileSetAtlasSource_vr2y8")

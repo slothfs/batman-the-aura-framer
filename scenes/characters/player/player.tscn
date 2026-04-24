@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://cd43tfmapwyvs"]
+[gd_scene load_steps=76 format=3 uid="uid://cd43tfmapwyvs"]
 
 [ext_resource type="Texture2D" uid="uid://ry7oemf75pgj" path="res://assets/actions/chop_back.png" id="1_4kqyw"]
 [ext_resource type="Texture2D" uid="uid://cu8ns4rv031x0" path="res://assets/actions/chop_front.png" id="2_svuau"]
@@ -17,6 +17,9 @@
 [ext_resource type="Texture2D" uid="uid://dowi8es1yw2ji" path="res://assets/actions/watering_front.png" id="15_gpigg"]
 [ext_resource type="Texture2D" uid="uid://bf54u3dcwksdx" path="res://assets/actions/watering_left.png" id="16_nt8su"]
 [ext_resource type="Texture2D" uid="uid://cmgd1rfp0bukf" path="res://assets/actions/watering_right.png" id="17_10pim"]
+[ext_resource type="Script" path="res://scripts/state_machine/node_state_machine.gd" id="18_58yth"]
+[ext_resource type="Script" path="res://scenes/characters/player/idle_state.gd" id="19_meqoc"]
+[ext_resource type="Script" path="res://scenes/characters/player/walk_state.gd" id="20_j55rb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pbtrp"]
 atlas = ExtResource("1_4kqyw")
@@ -493,32 +496,33 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vjq2h"]
-radius = 17.029387
+radius = 17.0294
 
-[node name="Player" type="CharacterBody2D" unique_id=1993383715]
+[node name="Player" type="CharacterBody2D"]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1657451000]
-position = Vector2(0.34374893, -22.09375)
-scale = Vector2(1.0690104, 1.0039063)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0.343749, -22.0938)
+scale = Vector2(1.06901, 1.00391)
 sprite_frames = SubResource("SpriteFrames_bcx1r")
 animation = &"chopping_right"
 autoplay = "idle_front"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=871382098]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, -17)
 shape = SubResource("CircleShape2D_vjq2h")
 
-[node name="StateMachine" type="Node" parent="." unique_id=1442164166 node_paths=PackedStringArray("initial_node_state")]
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_node_state")]
+script = ExtResource("18_58yth")
 initial_node_state = NodePath("Idle")
 
-[node name="Idle" type="Node" parent="StateMachine" unique_id=1619308846 node_paths=PackedStringArray("player", "animated_sprite_2d")]
+[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "animated_sprite_2d")]
+script = ExtResource("19_meqoc")
 player = NodePath("../..")
 animated_sprite_2d = NodePath("../../AnimatedSprite2D")
 
-[node name="Walk" type="Node" parent="StateMachine" unique_id=2048658765 node_paths=PackedStringArray("player", "animated_sprite_2d")]
+[node name="Walk" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "animated_sprite_2d")]
+script = ExtResource("20_j55rb")
 player = NodePath("../..")
 animated_sprite_2d = NodePath("../../AnimatedSprite2D")
 
-[node name="Chopping" type="Node" parent="StateMachine" unique_id=1073214357 node_paths=PackedStringArray("player", "animated_sprite_2d")]
-player = NodePath("../..")
-animated_sprite_2d = NodePath("../../AnimatedSprite2D")
+[node name="Chopping" type="Node" parent="StateMachine"]
