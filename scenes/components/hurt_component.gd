@@ -11,3 +11,4 @@ func _on_area_entered(area: Area2D) -> void:
 	
 	if tool == hit_component.current_tool:
 		hurt.emit(hit_component.hit_damage)
+ 

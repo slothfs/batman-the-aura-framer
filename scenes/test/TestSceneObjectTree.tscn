@@ -16,15 +16,15 @@ tile_map_data = PackedByteArray("AAAaABwAAwAFAAMAAAAaABsAAwACAAEAAAAaABoAAwACAAE
 tile_set = ExtResource("1_ftj3j")
 
 [node name="trees" type="TileMapLayer" parent="GameTileMap"]
-tile_map_data = PackedByteArray("AAADABYAAQAAAAAAAgAIABQAAQAAAAAAAgAMAAgAAQAAAAAAAgAWAAcAAQAAAAAAAgANAAkAAQAAAAAAAgAOABEAAQAAAAAAAgAUABMAAQAAAAAAAgAGAAkAAQAAAAAAAgAJAAwAAQAAAAAAAgADABAAAQAAAAAAAgAHABAAAQAAAAAAAgANABQAAQAAAAAAAgAVAAsAAQAAAAAAAgA=")
+tile_map_data = PackedByteArray("AAADABYAAQAAAAAAAgAMAAgAAQAAAAAAAgAWAAcAAQAAAAAAAgANAAkAAQAAAAAAAgAOABEAAQAAAAAAAgAUABMAAQAAAAAAAgAGAAkAAQAAAAAAAgAJAAwAAQAAAAAAAgADABAAAQAAAAAAAgAHABAAAQAAAAAAAgANABQAAQAAAAAAAgAVAAsAAQAAAAAAAgAIABQAAQAAAAAAAgAJABkAAQAAAAAACAAOABcAAQAAAAAACAANABoAAQAAAAAACAASABoAAQAAAAAACAAVABYAAQAAAAAACAA=")
 tile_set = ExtResource("1_ftj3j")
 
-[node name="Player" parent="GameTileMap" instance=ExtResource("2_kjcm7")]
+[node name="Player" parent="." instance=ExtResource("2_kjcm7")]
 position = Vector2(290, 358)
 scale = Vector2(0.3, 0.3)
 current_tool = 1
 
-[node name="Camera2D" type="Camera2D" parent="GameTileMap/Player"]
+[node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(10.0001, -13.3333)
 scale = Vector2(3.33333, 3.33333)
-zoom = Vector2(4, 4)
+zoom = Vector2(2, 2)

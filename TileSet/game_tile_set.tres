@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=12 format=3 uid="uid://ccojv5mjyu05d"]
+[gd_resource type="TileSet" load_steps=20 format=3 uid="uid://ccojv5mjyu05d"]
 
 [ext_resource type="Texture2D" uid="uid://bm0qqmdldbp1" path="res://assets/Tilesets/batman_water.png" id="1_yw6o0"]
 [ext_resource type="Texture2D" uid="uid://dps7kg400vr37" path="res://assets/Grass.png" id="2_4uypn"]
@@ -6,6 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://clkl3alwpby3y" path="res://scenes/objects/trees/small_tree.tscn" id="3_2ncqh"]
 [ext_resource type="Texture2D" uid="uid://dhm6717w5aoeb" path="res://assets/crop.png" id="3_7v73t"]
 [ext_resource type="Texture2D" uid="uid://b0wivup7dd67g" path="res://assets/Objects/Basic_Grass_Biom_things.png" id="4_7v73t"]
+[ext_resource type="PackedScene" uid="uid://btjot2e5opbn2" path="res://scenes/objects/trees/large_tree.tscn" id="4_ytwu2"]
+[ext_resource type="PackedScene" uid="uid://bhew0p43u6vft" path="res://scenes/components/hurt_component.tscn" id="5_iq60w"]
+[ext_resource type="PackedScene" uid="uid://be6c5kahaprb5" path="res://scenes/components/damage_component.tscn" id="6_kmsop"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nbys2"]
 texture = ExtResource("1_yw6o0")
@@ -16,9 +19,64 @@ texture = ExtResource("1_yw6o0")
 0:0/animation_frame_3/duration = 0.2
 0:0/0 = 0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_74wwp"]
+atlas = ExtResource("4_7v73t")
+region = Rect2(16, 0, 32, 32)
+
+[sub_resource type="GDScript" id="GDScript_c8x5i"]
+script/source = "extends Sprite2D
+
+@onready var hurt_component: HurtComponent = $HurtComponent
+@onready var damage_component: DamageComponent = $DamageComponent
+
+var log_scene = preload(\"res://scenes/objects/trees/log.tscn\")
+
+func _ready() -> void:
+	hurt_component.hurt.connect(on_hurt)
+	damage_component.max_damaged_reached.connect(on_max_damage_reached)
+
+
+func on_hurt(hit_damage: int) -> void:
+	damage_component.apply_damage(hit_damage)
+	material.set_shader_parameter(\"shake_intensity\", 0.5)
+	await get_tree().create_timer(1.0).timeout
+	material.set_shader_parameter(\"shake_intensity\", 0.0)
+
+func on_max_damage_reached() -> void:
+	call_deferred(\"add_log_scene\")
+	print(\"max damaged reached\")
+	queue_free()
+
+func add_log_scene() -> void:
+	var log_instance = log_scene.instantiate() as Node2D 
+	log_instance.global_position = global_position
+	get_parent().add_child(log_instance)
+"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s5d8w"]
+radius = 4.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3w0ei"]
+size = Vector2(13, 20)
+
+[sub_resource type="PackedScene" id="PackedScene_y6um1"]
+_bundled = {
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"names": PackedStringArray("LargeTree", "texture", "script", "Sprite2D", "StaticBody2D", "CollisionShape2D", "position", "shape", "HurtComponent", "tool", "debug_color", "DamageComponent", "max_damage"),
+"node_count": 6,
+"node_paths": [],
+"nodes": PackedInt32Array(-1, -1, 3, 0, -1, 2, 1, 0, 2, 1, 0, 0, 0, 4, 4, -1, 0, 0, 1, 0, 5, 5, -1, 2, 6, 2, 7, 3, 0, 0, 0, 2147483647, 8, 4, 1, 9, 5, 0, 3, 0, 5, 5, -1, 3, 6, 6, 7, 7, 10, 8, 0, 0, 0, 2147483647, 11, 9, 1, 12, 10, 0),
+"variants": [SubResource("AtlasTexture_74wwp"), SubResource("GDScript_c8x5i"), Vector2(0, 11), SubResource("CircleShape2D_s5d8w"), ExtResource("5_iq60w"), 1, Vector2(0, 4), SubResource("RectangleShape2D_3w0ei"), Color(0.570022, 0.528569, 0.482514, 0.42), ExtResource("6_kmsop"), 6],
+"version": 3
+}
+
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_1pbo8"]
 scenes/1/scene = ExtResource("2_58jda")
 scenes/2/scene = ExtResource("3_2ncqh")
+scenes/6/scene = SubResource("PackedScene_y6um1")
+scenes/8/scene = ExtResource("4_ytwu2")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2p8sr"]
 texture = ExtResource("2_4uypn")
