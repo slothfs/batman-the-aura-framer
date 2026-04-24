@@ -89,7 +89,7 @@ animations = [{
 size = Vector2(16, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_letf8"]
-size = Vector2(10, 42)
+size = Vector2(10, 30)
 
 [node name="Door" type="StaticBody2D"]
 script = ExtResource("1_y45lq")
@@ -104,6 +104,5 @@ shape = SubResource("RectangleShape2D_eru8e")
 [node name="InteractableComponents" parent="." instance=ExtResource("3_jswba")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableComponents"]
-position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_letf8")
 debug_color = Color(0.698942, 0.482768, 0.279653, 0.42)
