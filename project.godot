@@ -33,7 +33,7 @@ window/stretch/scale_mode="integer"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")
+enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg", "res://addons/ziva_installer/plugin.cfg")
 
 [file_customization]
 
@@ -78,6 +78,7 @@ hit={
 [layer_names]
 
 2d_physics/layer_1="ground"
+2d_navigation/layer_1="Chicken Navigation"
 2d_physics/layer_2="Player"
 2d_physics/layer_3="Interactable"
 2d_physics/layer_4="Tool"
