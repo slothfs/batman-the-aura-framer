@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://3hkoojoufhwc"]
+[gd_scene load_steps=13 format=3 uid="uid://3hkoojoufhwc"]
 
 [ext_resource type="Theme" uid="uid://bvnvnh61vpgxn" path="res://scenes/ui/game_ui_theme.tres" id="1_600ku"]
+[ext_resource type="Script" path="res://scenes/ui/tools_panel.gd" id="2_cgwnw"]
 [ext_resource type="Texture2D" uid="uid://52mjlwl4d8jt" path="res://assets/Objects/Basic tools and meterials.png" id="2_xyimb"]
 [ext_resource type="Texture2D" uid="uid://560145s55wv" path="res://assets/Objects/Basic Plants.png" id="3_7lp5g"]
 
@@ -34,13 +35,9 @@ atlas = SubResource("CompressedTexture2D_s1pxr")
 region = Rect2(0, 16, 16, 16)
 
 [node name="ToolsPanel" type="PanelContainer"]
-offset_left = 12.0
-offset_top = -4.00001
-offset_right = 72.0
-offset_bottom = 56.0
-scale = Vector2(2.28636, 2.0993)
 theme = ExtResource("1_600ku")
 theme_type_variation = &"DarkWoodPanel"
+script = ExtResource("2_cgwnw")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -80,9 +77,15 @@ theme_type_variation = &"ToolButton"
 icon = SubResource("AtlasTexture_t1jn3")
 icon_alignment = 1
 
-[node name="ToolMato" type="Button" parent="MarginContainer/HBoxContainer"]
+[node name="ToolTomato" type="Button" parent="MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(26, 26)
 layout_mode = 2
 theme_type_variation = &"ToolButton"
 icon = SubResource("AtlasTexture_idmdf")
 icon_alignment = 1
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/ToolAxe" to="." method="_on_tool_axe_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/ToolTilling" to="." method="_on_tool_tilling_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/ToolWateringCan" to="." method="_on_tool_watering_can_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/ToolCorn" to="." method="_on_tool_corn_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/ToolTomato" to="." method="_on_tool_tomato_pressed"]

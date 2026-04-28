@@ -510,7 +510,6 @@ radius = 6.08276
 y_sort_enabled = true
 collision_layer = 2
 script = ExtResource("1_2jjde")
-current_tool = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(1, -21)
@@ -558,7 +557,6 @@ animated_sprite_2d = NodePath("../../AnimatedSprite2D")
 [node name="HitComponent" parent="." instance=ExtResource("25_iiwjb")]
 collision_layer = 1
 collision_mask = 1
-current_tool = 1
 
 [node name="HitComponentCollisionShape2D" type="CollisionShape2D" parent="HitComponent"]
 shape = SubResource("CircleShape2D_qhtik")

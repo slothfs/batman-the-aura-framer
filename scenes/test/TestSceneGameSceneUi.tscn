@@ -1,9 +1,12 @@
-[gd_scene load_steps=3 format=4 uid="uid://br0w31t0eit00"]
+[gd_scene load_steps=5 format=4 uid="uid://br0w31t0eit00"]
 
 [ext_resource type="TileSet" uid="uid://ccojv5mjyu05d" path="res://TileSet/game_tile_set.tres" id="1_ij7fe"]
 [ext_resource type="PackedScene" uid="uid://cd43tfmapwyvs" path="res://scenes/characters/player/player.tscn" id="2_710kc"]
+[ext_resource type="PackedScene" uid="uid://cjulfr1eajdvb" path="res://scenes/ui/game_screen.tscn" id="3_tho5e"]
+[ext_resource type="Script" path="res://scenes/ui/game_screen.gd" id="4_ivugp"]
 
 [node name="TestSceneTilemap" type="Node2D"]
+position = Vector2(398, 554)
 
 [node name="GameTileMap" type="Node2D" parent="."]
 
@@ -16,8 +19,11 @@ tile_map_data = PackedByteArray("AAAaABwAAwAFAAMAAAAaABsAAwACAAEAAAAaABoAAwACAAE
 tile_set = ExtResource("1_ij7fe")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(570, 319)
-zoom = Vector2(1.01, 1.01)
+position = Vector2(552, 335)
+zoom = Vector2(2, 2)
 
 [node name="Player" parent="." instance=ExtResource("2_710kc")]
 position = Vector2(244, 344)
+
+[node name="GameScreen" parent="." instance=ExtResource("3_tho5e")]
+script = ExtResource("4_ivugp")

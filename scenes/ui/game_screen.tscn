@@ -4,14 +4,15 @@
 [ext_resource type="PackedScene" uid="uid://3hkoojoufhwc" path="res://scenes/ui/tools_panel.tscn" id="2_eva24"]
 
 [node name="GameScreen" type="CanvasLayer"]
+scale = Vector2(3, 3)
+transform = Transform2D(3, 0, 0, 3, 0, 0)
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-offset_left = 11.0
-offset_top = 3.0
-offset_right = 211.0
-offset_bottom = 83.0
-scale = Vector2(2.77849, 2.99442)
+offset_right = 640.0
+offset_bottom = 400.0
 theme = ExtResource("1_nkuah")
 
 [node name="ToolsPanel" parent="MarginContainer" instance=ExtResource("2_eva24")]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8

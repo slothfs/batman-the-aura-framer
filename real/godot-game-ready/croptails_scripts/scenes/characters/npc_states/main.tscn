@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://c0j7w0000001"]
+
+[node name="Main" type="Node"]
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -50.0
+offset_right = 200.0
+offset_bottom = 50.0
+text = "Godot Tutorial Scripts Ready!
+
+Scripts Included:
+• State Machines (v1 & Finite State)
+• Croptails Game Components
+• Chronobot Game Components
+• 3D Prototype Scripts
+
+Open res://croptails_scripts/ to explore
+game scripts and components."
+horizontal_alignment = 1
+vertical_alignment = 1
