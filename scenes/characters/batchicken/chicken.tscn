@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://scenes/characters/batchicken/chicken.gd" id="1_a2a4b"]
 [ext_resource type="Texture2D" uid="uid://cxowaf7q6i6x5" path="res://assets/basic/batchicken.png" id="1_xwv8s"]
 [ext_resource type="Script" path="res://scripts/state_machine/node_state_machine.gd" id="2_f2f2e"]
-[ext_resource type="Script" path="res://scenes/characters/batchicken/idle_state.gd" id="3_1goop"]
-[ext_resource type="Script" path="res://scenes/characters/batchicken/walk_state.gd" id="4_rnbkc"]
+[ext_resource type="Script" path="res://scenes/characters/npc_states/idle_state.gd" id="3_1goop"]
+[ext_resource type="Script" path="res://scenes/characters/npc_states/walk_state.gd" id="4_rnbkc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i7q2a"]
 atlas = ExtResource("1_xwv8s")
@@ -62,9 +62,10 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_w6n8k"]
-radius = 4.0
+radius = 3.0
 
 [node name="Chicken" type="CharacterBody2D"]
+collision_layer = 64
 script = ExtResource("1_a2a4b")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -74,12 +75,13 @@ animation = &"walk"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -4)
+position = Vector2(-1, -5)
 shape = SubResource("CircleShape2D_w6n8k")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-radius = 5.0
-debug_enabled = true
+path_desired_distance = 10.0
+path_postprocessing = 1
+avoidance_enabled = true
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_node_state")]
 script = ExtResource("2_f2f2e")
