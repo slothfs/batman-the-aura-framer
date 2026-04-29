@@ -1,0 +1,7 @@
+[gd_resource type="FontVariation" load_steps=2 format=3 uid="uid://kj7nxb7u1lwn"]
+
+[ext_resource type="FontFile" uid="uid://bqwqsdi726m3s" path="res://assets/ui/fonts/Pixeled.ttf" id="1_l0jww"]
+
+[resource]
+base_font = ExtResource("1_l0jww")
+spacing_bottom = -2
