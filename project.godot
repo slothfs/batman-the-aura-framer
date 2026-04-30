@@ -15,7 +15,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="BatManFarmsAura"
-run/main_scene="res://scenes/houses/TestSceneHouse.tscn"
+run/main_scene="res://scenes/main_scene.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -36,7 +36,7 @@ window/stretch/aspect="keep_height"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg", "res://addons/ziva_installer/plugin.cfg")
+enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")
 
 [file_customization]
 
@@ -50,6 +50,10 @@ folder_colors={
 
 on_source_geometry_group=""
 player=""
+
+[gui]
+
+theme/custom_font="res://assets/Contour Line.otf"
 
 [input]
 

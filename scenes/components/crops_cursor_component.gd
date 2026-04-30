@@ -17,6 +17,8 @@ var distance: float
 func _ready() -> void:
 	await get_tree().process_frame
 	player = get_tree().get_first_node_in_group("player")
+	if not tilled_soil_tilemap_layer:
+		tilled_soil_tilemap_layer = get_parent().get_node("TilledSoil")
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("remove_dirt"):
@@ -37,23 +39,27 @@ func get_cell_under_mouse() -> void:
 	distance = player.global_position.distance_to(tilled_soil_tilemap_layer.to_global(local_cell_position))
 
 func add_crop() -> void:
-	if distance < 50.0 and cell_source_id != -1:
+	if distance < player.hit_range and cell_source_id != -1:
+		var crop_fields = get_parent().find_child("CropFields")
+		if not crop_fields:
+			crop_fields = Node2D.new()
+			crop_fields.name = "CropFields"
+			get_parent().add_child(crop_fields)
+			
 		if ToolManager.selected_tool == DataTypes.Tools.PlantCorn:
 			var corn_instance = corn_plant_scene.instantiate() as Node2D
 			corn_instance.global_position = tilled_soil_tilemap_layer.to_global(local_cell_position)
-			get_parent().find_child("CropFields").add_child(corn_instance)
+			crop_fields.add_child(corn_instance)
 	
 		if ToolManager.selected_tool == DataTypes.Tools.PlantTomato:
 			pass
-			# var tomato_instance = tomato_plant_scene.instantiate() as Node2D
-			# tomato_instance.global_position = local_cell_position
-			# get_parent().find_child("CropFields").add_child(tomato_instance)
-
 
 func remove_crop() -> void:
-	if distance < 50.0:
-		var crop_nodes = get_parent().find_child("CropFields").get_children()
-		
-		for node: Node2D in crop_nodes:
-			if node.global_position == tilled_soil_tilemap_layer.to_global(local_cell_position):
-				node.queue_free()
+	if distance < player.hit_range:
+		var crop_fields = get_parent().find_child("CropFields")
+		if crop_fields:
+			var crop_nodes = crop_fields.get_children()
+			
+			for node: Node2D in crop_nodes:
+				if node.global_position == tilled_soil_tilemap_layer.to_global(local_cell_position):
+					node.queue_free()

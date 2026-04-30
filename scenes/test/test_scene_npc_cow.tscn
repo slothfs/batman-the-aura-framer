@@ -53,11 +53,11 @@ drag_vertical_enabled = true
 navigation_polygon = SubResource("NavigationPolygon_3h2yl")
 navigation_layers = 2
 
-[node name="Cows2" parent="." instance=ExtResource("3_8w2g8")]
-position = Vector2(272, 357)
-
-[node name="Cows3" parent="." instance=ExtResource("3_8w2g8")]
+[node name="Cows3" parent="Cows" instance=ExtResource("3_8w2g8")]
 position = Vector2(285, 394)
 
-[node name="Cows4" parent="." instance=ExtResource("3_8w2g8")]
+[node name="Cows4" parent="Cows" instance=ExtResource("3_8w2g8")]
 position = Vector2(231, 344)
+
+[node name="Cows2" parent="Cows" instance=ExtResource("3_8w2g8")]
+position = Vector2(272, 357)

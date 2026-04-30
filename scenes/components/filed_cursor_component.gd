@@ -41,11 +41,11 @@ func get_cell_under_mouse() -> void:
 	print("mouse_position:", mouse_position , "cell_position:" , cell_position, "cell_source_id:" , cell_source_id)
 	print("distance: ", distance)
 func add_tilled_soil_cell() -> void: 
-	if distance < 50.0 && cell_source_id != -1:
+	if distance < player.hit_range && cell_source_id != -1:
 		tilled_soil_tilemap_layer.set_cells_terrain_connect([cell_position] , terrain_set, terrain, true)
 		
 func remove_tilled_soil_cell() ->void:
-	if distance < 50.0:
+	if distance < player.hit_range:
 		tilled_soil_tilemap_layer.set_cells_terrain_connect([cell_position], 0, -1, true)
 	
 	

@@ -3,6 +3,8 @@ extends CharacterBody2D
 
 @onready var hit_component: HitComponent = $HitComponent
 @export var current_tool: DataTypes.Tools = DataTypes.Tools.None
+@export var hit_range: float = 50.0
+@onready var walk_particles: GPUParticles2D = $WalkParticles
 
 var player_direction: Vector2
 

@@ -22,6 +22,16 @@ extends CanvasModulate
 @export var day_night_gradient_texture: GradientTexture1D
 
 func _ready() -> void:
+	# Loop background music
+	var bgm: AudioStreamPlayer = get_parent().get_node("BGM")
+	if bgm:
+		var s = bgm.stream.duplicate() as AudioStream
+		if s is AudioStreamOggVorbis:
+			s.loop = true
+		
+			
+		bgm.stream = s
+		bgm.play()
 	DayAndNightCycleManager.initial_day = initial_day
 	DayAndNightCycleManager.initial_hour = initial_hour
 	DayAndNightCycleManager.initial_minute = initial_minute

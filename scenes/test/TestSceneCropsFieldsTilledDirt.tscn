@@ -26,7 +26,6 @@ tile_map_data = PackedByteArray("AAAaABwAAwAFAAMAAAAaABsAAwACAAEAAAAaABoAAwACAAE
 tile_set = ExtResource("1_qtmpg")
 
 [node name="TilledSoil" type="TileMapLayer" parent="GameTileMap"]
-tile_map_data = PackedByteArray("AAAVAA4ABgABAAEAAAAUAA0ABgABAAEAAAATAA0ABgABAAEAAAASAAwABgABAAEAAAA=")
 tile_set = ExtResource("1_qtmpg")
 
 [node name="Camera2D" type="Camera2D" parent="."]
