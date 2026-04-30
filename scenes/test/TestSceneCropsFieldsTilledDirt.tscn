@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://c3ulrpr8wacad"]
+[gd_scene load_steps=10 format=4 uid="uid://c3ulrpr8wacad"]
 
 [ext_resource type="TileSet" uid="uid://ccojv5mjyu05d" path="res://TileSet/game_tile_set.tres" id="1_qtmpg"]
 [ext_resource type="PackedScene" uid="uid://cd43tfmapwyvs" path="res://scenes/characters/player/player.tscn" id="2_1c5cg"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://l2vuqdylukqn" path="res://scenes/ui/day_and_night_panel.tscn" id="5_5wywc"]
 [ext_resource type="PackedScene" uid="uid://h852ryin756x" path="res://scenes/components/day_and_n_ight_cycle_component.tscn" id="6_bftg8"]
 [ext_resource type="PackedScene" uid="uid://nnc0i3rabr61" path="res://scenes/components/filed_cursor_component.tscn" id="8_1pofe"]
+[ext_resource type="PackedScene" uid="uid://d3dog4ndnwfi0" path="res://scenes/objects/plants/corn.tscn" id="9_1ex8g"]
 [ext_resource type="Script" path="res://scenes/components/filed_cursor_component.gd" id="9_o5ioe"]
 
 [node name="TestSceneCropFiledScene" type="Node2D"]
@@ -52,3 +53,6 @@ offset_right = 585.333
 offset_bottom = 12.6666
 size_flags_horizontal = 8
 size_flags_vertical = 0
+
+[node name="Corn" parent="." instance=ExtResource("9_1ex8g")]
+position = Vector2(190, 338)
