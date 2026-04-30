@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://c3ulrpr8wacad"]
+[gd_scene load_steps=9 format=4 uid="uid://c3ulrpr8wacad"]
 
 [ext_resource type="TileSet" uid="uid://ccojv5mjyu05d" path="res://TileSet/game_tile_set.tres" id="1_qtmpg"]
 [ext_resource type="PackedScene" uid="uid://cd43tfmapwyvs" path="res://scenes/characters/player/player.tscn" id="2_1c5cg"]
@@ -6,7 +6,6 @@
 [ext_resource type="Script" path="res://scenes/ui/game_screen.gd" id="4_t2txa"]
 [ext_resource type="PackedScene" uid="uid://l2vuqdylukqn" path="res://scenes/ui/day_and_night_panel.tscn" id="5_5wywc"]
 [ext_resource type="PackedScene" uid="uid://h852ryin756x" path="res://scenes/components/day_and_n_ight_cycle_component.tscn" id="6_bftg8"]
-[ext_resource type="PackedScene" uid="uid://d3dog4ndnwfi0" path="res://scenes/objects/plants/corn.tscn" id="7_l4xvn"]
 [ext_resource type="PackedScene" uid="uid://nnc0i3rabr61" path="res://scenes/components/filed_cursor_component.tscn" id="8_1pofe"]
 [ext_resource type="Script" path="res://scenes/components/filed_cursor_component.gd" id="9_o5ioe"]
 
@@ -26,6 +25,8 @@ tile_map_data = PackedByteArray("AAAaABwAAwAFAAMAAAAaABsAAwACAAEAAAAaABoAAwACAAE
 tile_set = ExtResource("1_qtmpg")
 
 [node name="TilledSoil" type="TileMapLayer" parent="GameTileMap"]
+tile_map_data = PackedByteArray("AAAVAA4ABgABAAEAAAAUAA0ABgABAAEAAAATAA0ABgABAAEAAAASAAwABgABAAEAAAA=")
+tile_set = ExtResource("1_qtmpg")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(552, 335)
@@ -33,12 +34,10 @@ zoom = Vector2(2, 2)
 
 [node name="CropFields" type="Node2D" parent="."]
 
-[node name="Corn" parent="." instance=ExtResource("7_l4xvn")]
-texture_filter = 1
-position = Vector2(172, 303)
-
-[node name="FiledCursorComponent" parent="." instance=ExtResource("8_1pofe")]
+[node name="FiledCursorComponent" parent="." node_paths=PackedStringArray("grass_tilemap_layer", "tilled_soil_tilemap_layer") instance=ExtResource("8_1pofe")]
 script = ExtResource("9_o5ioe")
+grass_tilemap_layer = NodePath("../GameTileMap/grass")
+tilled_soil_tilemap_layer = NodePath("../GameTileMap/TilledSoil")
 
 [node name="Player" parent="." instance=ExtResource("2_1c5cg")]
 position = Vector2(244, 344)

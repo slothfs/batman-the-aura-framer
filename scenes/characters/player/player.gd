@@ -23,15 +23,15 @@ func _draw() -> void:
 		
 	var target_pos: Vector2 = Vector2.ZERO
 	if player_direction == Vector2.UP:
-		target_pos = Vector2(5, -51)
+		target_pos = Vector2(0, -18)
 	elif player_direction == Vector2.RIGHT:
-		target_pos = Vector2(25, -6)
+		target_pos = Vector2(9, 0)
 	elif player_direction == Vector2.DOWN:
-		target_pos = Vector2(-5, -1)
+		target_pos = Vector2(0, 3)
 	elif player_direction == Vector2.LEFT:
-		target_pos = Vector2(-22, -6)
+		target_pos = Vector2(-9, 0)
 	else:
-		target_pos = Vector2(-5, -1) # default down/front
+		target_pos = Vector2(0, 3) # default down/front
 		
 	# Draw a translucent circle matching the hit collision area
 	draw_arc(target_pos, 6.0, 0, TAU, 16, Color(1, 1, 1, 0.5), 1.0)
