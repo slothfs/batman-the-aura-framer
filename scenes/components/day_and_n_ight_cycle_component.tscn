@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://scenes/components/day_and_n_ight_cycle_component.gd" id="1_e7t6a"]
 
 [sub_resource type="Gradient" id="Gradient_p8byx"]
-offsets = PackedFloat32Array(0, 0.517857, 1)
-colors = PackedColorArray(0, 0, 0, 1, 0.517857, 0.517857, 0.517857, 1, 1, 1, 1, 1)
+offsets = PackedFloat32Array(0, 0.0669643, 0.165179, 0.348214, 0.535714, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.027451, 0.0431373, 0.101961, 1, 0.0509804, 0.0705882, 0.156863, 1, 0.0784314, 0.0980392, 0.2, 1, 0.101961, 0.121569, 0.227451, 1, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_lb5yu"]
 gradient = SubResource("Gradient_p8byx")

@@ -1,0 +1,51 @@
+[gd_scene load_steps=10 format=3 uid="uid://d3dog4ndnwfi0"]
+
+[ext_resource type="Texture2D" uid="uid://560145s55wv" path="res://assets/Objects/Basic Plants.png" id="1_acv05"]
+[ext_resource type="Script" path="res://scenes/objects/plants/corn.gd" id="1_g61dj"]
+[ext_resource type="PackedScene" uid="uid://dr72omruu5pht" path="res://scenes/objects/plants/watering_particles.tscn" id="2_6u3sm"]
+[ext_resource type="PackedScene" uid="uid://bhew0p43u6vft" path="res://scenes/components/hurt_component.tscn" id="2_lgbrl"]
+[ext_resource type="PackedScene" uid="uid://cnxaqjuof35p4" path="res://scenes/objects/plants/flowering_particles.tscn" id="3_nv2vt"]
+[ext_resource type="PackedScene" uid="uid://bm2ttcxlbgydq" path="res://scenes/objects/plants/growth_cycle_component.tscn" id="5_jm7se"]
+
+[sub_resource type="Gradient" id="Gradient_fucwh"]
+offsets = PackedFloat32Array(0.150943, 0.75)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_d3vqd"]
+gradient = SubResource("Gradient_fucwh")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kfd3m"]
+size = Vector2(20, 11)
+
+[node name="Corn" type="Node2D"]
+script = ExtResource("1_g61dj")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(-1, 0)
+color = Color(0, 0.715509, 3.85046e-07, 1)
+energy = 0.5
+shadow_enabled = true
+shadow_filter = 2
+texture = SubResource("GradientTexture2D_d3vqd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -3)
+texture = ExtResource("1_acv05")
+hframes = 6
+vframes = 2
+frame = 1
+
+[node name="WateringParticles" parent="." instance=ExtResource("2_6u3sm")]
+
+[node name="FloweringParticles" parent="." instance=ExtResource("3_nv2vt")]
+
+[node name="GrowthCycleComponent" parent="." instance=ExtResource("5_jm7se")]
+
+[node name="HurtComponent" parent="." instance=ExtResource("2_lgbrl")]
+tool = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtComponent"]
+position = Vector2(0, -1.5)
+shape = SubResource("RectangleShape2D_kfd3m")
