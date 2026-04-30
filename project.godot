@@ -49,6 +49,7 @@ folder_colors={
 [global_group]
 
 on_source_geometry_group=""
+player=""
 
 [input]
 
