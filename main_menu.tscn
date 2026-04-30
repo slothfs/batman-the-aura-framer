@@ -1,4 +1,88 @@
-[gd_scene format=3 uid="uid://dgl2q86j101dp"]
+[gd_scene load_steps=18 format=3 uid="uid://dgl2q86j101dp"]
+
+[ext_resource type="Script" path="res://main_menu.gd" id="1_1mebj"]
+[ext_resource type="Texture2D" uid="uid://cxw34bpan8ucu" path="res://assets/ui/emojis.png" id="1_h38ud"]
+[ext_resource type="Shader" path="res://main_menu.gdshader" id="1_tmmiw"]
+[ext_resource type="AudioStream" uid="uid://gat6lkvrg5eq" path="res://bgg.mp3" id="3_011l5"]
+[ext_resource type="Texture2D" uid="uid://ehiqb3pr0c0h" path="res://assets/exit.png" id="5_x1cej"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r4mk6"]
+shader = ExtResource("1_tmmiw")
+shader_parameter/speed = 1.0
+shader_parameter/intensity = 0.15
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gmfpl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ikk42"]
+atlas = ExtResource("1_h38ud")
+region = Rect2(0, 354, 118, 118)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wtv11"]
+atlas = ExtResource("1_h38ud")
+region = Rect2(118, 354, 118, 118)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gl3xt"]
+atlas = ExtResource("1_h38ud")
+region = Rect2(236, 354, 118, 118)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m76tm"]
+atlas = ExtResource("1_h38ud")
+region = Rect2(354, 354, 118, 118)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gsxrs"]
+atlas = ExtResource("1_h38ud")
+region = Rect2(0, 236, 118, 118)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qmqb2"]
+atlas = ExtResource("1_h38ud")
+region = Rect2(118, 236, 118, 118)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p1258"]
+atlas = ExtResource("1_h38ud")
+region = Rect2(236, 236, 118, 118)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k26i1"]
+atlas = ExtResource("1_h38ud")
+region = Rect2(354, 236, 118, 118)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sg7mc"]
+atlas = ExtResource("1_h38ud")
+region = Rect2(472, 236, 118, 118)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ciess"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ikk42")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wtv11")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gl3xt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m76tm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gsxrs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qmqb2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p1258")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k26i1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sg7mc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Main_menu" type="Control"]
 layout_mode = 3
@@ -7,6 +91,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_1mebj")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 0
@@ -14,25 +99,52 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="ColorRect" type="ColorRect" parent="Panel"]
+material = SubResource("ShaderMaterial_r4mk6")
 layout_mode = 0
-offset_right = 1925.0
+offset_right = 2318.0
 offset_bottom = 1198.0
 color = Color(0, 0, 0.2, 1)
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Panel/ColorRect"]
+modulate = Color(0.2, 0.2, 0.2, 0.356863)
+texture_filter = 1
+material = SubResource("ShaderMaterial_gmfpl")
+position = Vector2(1083, 753)
+scale = Vector2(7.23517, 7.74576)
+sprite_frames = SubResource("SpriteFrames_ciess")
+autoplay = "default"
+frame_progress = 0.987771
+
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_left = 191.0
-offset_top = 274.0
-offset_right = 1759.0
-offset_bottom = 655.0
+offset_left = 383.0
+offset_top = 268.0
+offset_right = 1951.0
+offset_bottom = 649.0
 theme_override_font_sizes/font_size = 150
 text = "BATMAN FANTASY WORLD"
 
 [node name="Explore" type="Button" parent="."]
 layout_mode = 0
-offset_left = 622.0
-offset_top = 685.0
-offset_right = 1160.0
-offset_bottom = 820.0
+offset_left = 823.0
+offset_top = 705.0
+offset_right = 1361.0
+offset_bottom = 840.0
 theme_override_font_sizes/font_size = 100
 text = "Explore World"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_011l5")
+autoplay = true
+
+[node name="Quit" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 1434.0
+offset_top = 724.0
+offset_right = 1493.0
+offset_bottom = 774.0
+scale = Vector2(2.02155, 2.17972)
+texture_normal = ExtResource("5_x1cej")
+
+[connection signal="pressed" from="Explore" to="." method="_on_explore_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

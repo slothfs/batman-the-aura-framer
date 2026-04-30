@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bq324k70lb56i"]
+[gd_scene load_steps=12 format=3 uid="uid://bq324k70lb56i"]
 
 [ext_resource type="PackedScene" uid="uid://h852ryin756x" path="res://scenes/components/day_and_n_ight_cycle_component.tscn" id="1_akb4g"]
 [ext_resource type="PackedScene" uid="uid://cjulfr1eajdvb" path="res://scenes/ui/game_screen.tscn" id="1_x48xs"]
@@ -25,6 +25,9 @@ gradient = SubResource("Gradient_owpq5")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iqis4"]
+bg_color = Color(0, 0, 0, 0.211765)
+
 [node name="MainScene" type="Node"]
 
 [node name="BGM" type="AudioStreamPlayer" parent="."]
@@ -41,7 +44,7 @@ y_sort_enabled = true
 scale = Vector2(1.11411, 1.00703)
 
 [node name="Player" parent="LevelRoot" instance=ExtResource("5_6qmmj")]
-position = Vector2(877, 638)
+position = Vector2(1153, 423)
 scale = Vector2(0.8, 0.8)
 
 [node name="PointLight2D" type="PointLight2D" parent="LevelRoot/Player"]
@@ -72,3 +75,12 @@ position = Vector2(1722, 788)
 scale = Vector2(4.46875, 4.20313)
 energy = 0.5
 texture = SubResource("GradientTexture2D_kavhy")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 942.0
+offset_top = 329.0
+offset_right = 1362.0
+offset_bottom = 358.0
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_iqis4")
+text = "hey click button turn by turn for proper movement"
